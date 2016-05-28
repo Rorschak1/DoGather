@@ -7,10 +7,23 @@
     android:id="@+id/pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome_button"
+        android:text="Lets Start"
+        android:background="#451719"
+        android:layout_above="@+id/titles"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
     <com.viewpagerindicator.CirclePageIndicator
         android:id="@+id/titles"
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_width="fill_parent" />
+
+
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.timer.rorschak.dogather;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,43 +9,54 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import com.viewpagerindicator.CirclePageIndicator;
 import java.util.ArrayList;
 
 /**
- * Created by Rorschak1 on 5/26/16.
+ * UserWelcomeFragment.java - Base fragment for 3 welcome screens containing layout for pager and indicator
+ * @author  Rorschak1
+ * @version 1.0
  */
+
 public class UserWelcomeFragment extends Fragment {
 
     protected ViewPager mPager;
+    private Button mUserButton;
 
     /**
      * Following is adapter to add or remove views from the pager
      */
     protected class UserPagerAdapter extends PagerAdapter {
         private ArrayList<View> mViews = new ArrayList<>();
+
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = mViews.get(position);
             container.addView(view);
             return view;
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView(mViews.get(position));
         }
+
         @Override
         public int getCount() {
             return mViews.size();
         }
+
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view.equals(object);
         }
+
         @Override
         public int getItemPosition(Object object) {
             return mViews.indexOf(object);
         }
+
         public void addView(View view) {
             mViews.add(view);
         }
@@ -55,11 +67,20 @@ public class UserWelcomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        UserPagerAdapter userWelcomeAdapter= new UserPagerAdapter();
+        UserPagerAdapter userWelcomeAdapter = new UserPagerAdapter();
 
-        //inflate the view for fragment and add the page layouts to it
+        /**inflate the view for fragment and add the page layouts to it*/
         View returnView = inflater.inflate(R.layout.userwelcome, null);
-        mPager=(ViewPager) returnView.findViewById(R.id.pager);
+
+        mUserButton = (Button) returnView.findViewById(R.id.welcome_button);
+        mUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userLoginNavigation();
+            }
+        });
+
+        mPager = (ViewPager) returnView.findViewById(R.id.pager);
         userWelcomeAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_page1, null));
         userWelcomeAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_pag2, null));
         userWelcomeAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_page3, null));
@@ -67,7 +88,54 @@ public class UserWelcomeFragment extends Fragment {
         final CirclePageIndicator paginator = (CirclePageIndicator) returnView.findViewById(R.id.titles);
 
         paginator.setViewPager(mPager);
+        callchecker(mPager, userWelcomeAdapter);
 
         return returnView;
     }
+
+
+    /**
+     * @param viewPager    Determine what is the current condition of viewpgager
+     * @param pagerAdapter adapter to contain the views and return id neccessary
+     */
+    private void callchecker(final ViewPager viewPager, PagerAdapter pagerAdapter) {
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                onPageChanged(i, viewPager.getAdapter().getCount());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+            }
+        });
+
+    }
+
+
+    // Following is the method to animate buttons when the pager
+    //does stuff to move the screens left to right or vice versa
+
+    private void onPageChanged(int pos, int count) {
+
+
+        if (pos + 1 == count) {
+            mUserButton.setVisibility(View.VISIBLE);          // this is last page. show the button
+        }
+    }
+
+
+    private void userLoginNavigation() {
+
+        /** fire the login intent from here and take the user to the login */
+
+        Intent intent = new Intent(getActivity(), Dogather_Login_Activity.class);
+        startActivity(intent);
+    }
+
 }

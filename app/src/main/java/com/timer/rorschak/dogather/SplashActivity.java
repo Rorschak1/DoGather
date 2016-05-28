@@ -6,6 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
+/**
+ * Splash Activity.java - Splash screen for Dogather app
+ * @author  Rorschak1
+ * @version 1.0
+ */
+
 public class SplashActivity extends AppCompatActivity {
 
     private Button mButton;
