@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DoGather</string>
+
+    //Login screen strings
+    <string name="usr_hint">Enter Username here</string>
+    <string name="pwd_hint">Enter Password here</string>
+    <string name="sign_in_text">SignIn</string>
+    <string name="forgot_sign_link">forgot my details to SignIn</string>
+    <string name="sign_up_text">signup now for fun</string>
 </resources>

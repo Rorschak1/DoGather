@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,9 @@ import java.util.ArrayList;
 
 public class UserWelcomeFragment extends Fragment {
 
-    protected ViewPager mPager;
+    private ViewPager mPager;
     private Button mUserButton;
+    private UserPagerAdapter mUserAdapter;
 
     /**
      * Following is adapter to add or remove views from the pager
@@ -67,11 +69,12 @@ public class UserWelcomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        UserPagerAdapter userWelcomeAdapter = new UserPagerAdapter();
 
+
+        Log.d("Called oncreate","once created ");
         /**inflate the view for fragment and add the page layouts to it*/
         View returnView = inflater.inflate(R.layout.userwelcome, null);
-
+        mUserAdapter= new UserPagerAdapter();
         mUserButton = (Button) returnView.findViewById(R.id.welcome_button);
         mUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,24 +84,30 @@ public class UserWelcomeFragment extends Fragment {
         });
 
         mPager = (ViewPager) returnView.findViewById(R.id.pager);
-        userWelcomeAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_page1, null));
-        userWelcomeAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_pag2, null));
-        userWelcomeAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_page3, null));
-        mPager.setAdapter(userWelcomeAdapter);
+        mUserAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_page1, null));
+        mUserAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_pag2, null));
+        mUserAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_page3, null));
+        mPager.setAdapter(mUserAdapter);
         final CirclePageIndicator paginator = (CirclePageIndicator) returnView.findViewById(R.id.titles);
 
         paginator.setViewPager(mPager);
-        callchecker(mPager, userWelcomeAdapter);
 
         return returnView;
     }
 
+    @Override
+    public void onResume() {
+
+        callchecker(mPager, mUserAdapter);
+
+        super.onResume();
+    }
 
     /**
      * @param viewPager    Determine what is the current condition of viewpgager
      * @param pagerAdapter adapter to contain the views and return id neccessary
      */
-    private void callchecker(final ViewPager viewPager, PagerAdapter pagerAdapter) {
+    private void callchecker(final ViewPager viewPager, final PagerAdapter pagerAdapter) {
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -107,7 +116,7 @@ public class UserWelcomeFragment extends Fragment {
 
             @Override
             public void onPageSelected(int i) {
-                onPageChanged(i, viewPager.getAdapter().getCount());
+                onPageChanged(i, pagerAdapter.getCount());
             }
 
             @Override
@@ -123,9 +132,12 @@ public class UserWelcomeFragment extends Fragment {
 
     private void onPageChanged(int pos, int count) {
 
-
         if (pos + 1 == count) {
             mUserButton.setVisibility(View.VISIBLE);          // this is last page. show the button
+        }
+        else {
+            mUserButton.setVisibility(View.GONE);
+
         }
     }
 
@@ -133,9 +145,9 @@ public class UserWelcomeFragment extends Fragment {
     private void userLoginNavigation() {
 
         /** fire the login intent from here and take the user to the login */
+        startActivity(new Intent(getActivity(), Dogather_Login_Activity.class));
+        getActivity().overridePendingTransition(R.anim.slide_up, R.anim.stay);
 
-        Intent intent = new Intent(getActivity(), Dogather_Login_Activity.class);
-        startActivity(intent);
     }
 
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 
+
 /**
  * Splash Activity.java - Splash screen for Dogather app
  * @author  Rorschak1
@@ -24,6 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent=new Intent(SplashActivity.this,UserWelcomeActivity.class);
                 startActivity(intent);
             }

@@ -20,7 +20,10 @@
         <activity
             android:name=".UserWelcomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Dogather_Login_Activity" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
+        <activity
+            android:name=".Dogather_Login_Activity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".Sign_Up_Activity"></activity>
     </application>
 
 </manifest>
