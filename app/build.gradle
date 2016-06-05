@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -17,9 +18,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-        dexOptions {
-            preDexLibraries = false
-        }
+    dexOptions {
+        preDexLibraries = false
+    }
 
 }
 
@@ -27,8 +28,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
-    compile ('com.github.JakeWharton:ViewPagerIndicator:2.4.1')
-            {
-                exclude module: 'support-v4'
+    compile('com.github.JakeWharton:ViewPagerIndicator:2.4.1') {
+        exclude module: 'support-v7'
     }
+    compile 'com.android.support:multidex:1.0.0'
 }
