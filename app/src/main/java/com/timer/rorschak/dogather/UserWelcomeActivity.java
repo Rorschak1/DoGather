@@ -3,7 +3,7 @@ package com.timer.rorschak.dogather;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.util.Log;
 
 /**
  * UserWelcomeActivity.java - Activity fired from splash. Container for welcome fragment
@@ -21,12 +21,14 @@ public class UserWelcomeActivity extends AppCompatActivity {
 
         mFragment = getSupportFragmentManager().findFragmentById(R.id.base_fragment);
         if (!(mFragment instanceof UserWelcomeFragment)) {
+            Log.d("crashed here" , "at one");
             mFragment=UserWelcomeFragment.instantiate(UserWelcomeActivity.this, UserWelcomeFragment.class.getName());
-
+            Log.d("crashed here" , "at two");
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.base_fragment, mFragment, UserWelcomeFragment.class.getSimpleName())
                     .commit();
+            Log.d("crashed here" , "at three");
 
         }
     }

@@ -69,8 +69,6 @@ public class UserWelcomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
-
         Log.d("Called oncreate","once created ");
         /**inflate the view for fragment and add the page layouts to it*/
         View returnView = inflater.inflate(R.layout.userwelcome, null);
@@ -146,7 +144,7 @@ public class UserWelcomeFragment extends Fragment {
 
         /** fire the login intent from here and take the user to the login */
         startActivity(new Intent(getActivity(), Dogather_Login_Activity.class));
-        getActivity().overridePendingTransition(R.anim.slide_up, R.anim.stay);
+        //getActivity().overridePendingTransition(R.anim.slide_up, R.anim.stay);
 
     }
 
