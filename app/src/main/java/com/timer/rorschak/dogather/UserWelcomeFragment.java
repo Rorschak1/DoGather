@@ -81,6 +81,7 @@ public class UserWelcomeFragment extends Fragment {
             }
         });
 
+        //TODO: Need to fix the distance between the dots in jake wharton pager
         mPager = (ViewPager) returnView.findViewById(R.id.pager);
         mUserAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_page1, null));
         mUserAdapter.addView(LayoutInflater.from(mPager.getContext()).inflate(R.layout.user_pag2, null));
