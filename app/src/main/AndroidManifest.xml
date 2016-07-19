@@ -22,8 +22,14 @@
         <activity
             android:name=".Dogather_Login_Activity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Sign_Up_Activity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".SignUpActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".Sign_Up_Activity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".DoGatherHomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>

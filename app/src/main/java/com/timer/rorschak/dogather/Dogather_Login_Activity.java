@@ -31,7 +31,12 @@ public class Dogather_Login_Activity extends AppCompatActivity {
                 Dogather_Login_Activity.this.overridePendingTransition(R.anim.slide_up, R.anim.stay);
             }
         });
-
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validateCallhomescreen();
+            }
+        });
 
     }
 
@@ -40,4 +45,12 @@ public class Dogather_Login_Activity extends AppCompatActivity {
         finish();
         super.onBackPressed();
     }
+
+    private void validateCallhomescreen() {
+
+        Intent intent=new Intent(Dogather_Login_Activity.this,DoGatherHomeActivity.class);
+        startActivity(intent);
+
+    }
+
 }

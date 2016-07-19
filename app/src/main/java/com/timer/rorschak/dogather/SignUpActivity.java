@@ -5,8 +5,7 @@ import android.os.Bundle;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    //TODO: Observed a delay in coming up of the screen . not sure if
-    //it due to emulator or something . Investigation continues
+    //TODO: Observed a delay in coming up of the screen . not sure why
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

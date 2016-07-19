@@ -7,4 +7,6 @@
     <string name="sign_in_text">SignIn</string>
     <string name="forgot_sign_link">forgot my details to SignIn</string>
     <string name="sign_up_text">signup now for fun</string>
+    <string name="event_text_desc">event desc in normal as it will contain a lot of copy we need to check how long the text can be and everything</string>
+
 </resources>

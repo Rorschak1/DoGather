@@ -145,7 +145,6 @@ public class UserWelcomeFragment extends Fragment {
 
         /** fire the login intent from here and take the user to the login */
         startActivity(new Intent(getActivity(), Dogather_Login_Activity.class));
-        //getActivity().overridePendingTransition(R.anim.slide_up, R.anim.stay);
 
     }
 

@@ -1,4 +1,4 @@
-package com.timer.rorschak.dogather.Requests;
+package com.timer.rorschak.dogather.Util;
 
 
 import com.android.volley.toolbox.JsonRequest;

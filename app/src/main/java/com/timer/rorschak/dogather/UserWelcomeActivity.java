@@ -21,15 +21,11 @@ public class UserWelcomeActivity extends AppCompatActivity {
 
         mFragment = getSupportFragmentManager().findFragmentById(R.id.base_fragment);
         if (!(mFragment instanceof UserWelcomeFragment)) {
-            Log.d("crashed here" , "at one");
             mFragment=UserWelcomeFragment.instantiate(UserWelcomeActivity.this, UserWelcomeFragment.class.getName());
-            Log.d("crashed here" , "at two");
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.base_fragment, mFragment, UserWelcomeFragment.class.getSimpleName())
                     .commit();
-            Log.d("crashed here" , "at three");
-
         }
     }
 }
