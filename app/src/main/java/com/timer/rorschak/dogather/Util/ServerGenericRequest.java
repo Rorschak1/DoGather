@@ -3,6 +3,11 @@ package com.timer.rorschak.dogather.Util;
 
 import com.android.volley.toolbox.JsonRequest;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  * ServerGenericRequest.java - Generic request to be sent to server
  * @author  Rorschak1
@@ -16,8 +21,6 @@ public class ServerGenericRequest {
 
         url=urlstring;
     }
-
-
 
 
 
